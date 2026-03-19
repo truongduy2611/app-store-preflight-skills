@@ -8,6 +8,10 @@ Preflight helps developers catch potential App Store Review guideline violations
 
 This skill integrates with the [`asc` CLI](https://github.com/rudrankriyam/App-Store-Connect-CLI) (`brew install asc`) and the [ASC CLI Skills](https://github.com/rudrankriyam/app-store-connect-cli-skills) to pull and inspect App Store metadata.
 
+Most metadata examples assume the canonical JSON layout written by
+`asc metadata pull`. If you are starting from fastlane metadata, adapt the path
+examples or pull the canonical `asc` layout first.
+
 ## Install
 
 ```bash

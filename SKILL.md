@@ -18,6 +18,7 @@ Run pre-submission checks on your iOS/macOS project to catch common App Store re
 
 - **asc CLI** — Install via Homebrew: `brew install asc` ([App-Store-Connect-CLI](https://github.com/rudrankriyam/App-Store-Connect-CLI))
 - **ASC CLI Skills** — [app-store-connect-cli-skills](https://github.com/rudrankriyam/app-store-connect-cli-skills) for `asc` usage patterns
+- **jq** — Optional, but used by some JSON-inspection examples in the rule docs
 
 ## Step 1: Identify App Type → Load Checklist
 
@@ -50,8 +51,12 @@ asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
 `asc metadata pull` writes app info files to `./metadata/app-info/*.json` and
 version-localization files to `./metadata/version/<VERSION>/*.json`.
 
-If metadata already exists locally (for example fastlane `metadata/`), skip this
-step and point the scan at that directory.
+Most rule examples below assume the canonical JSON layout written by
+`asc metadata pull`.
+
+If you already have metadata in another layout (for example fastlane
+`metadata/`), either adapt the file-path examples to that structure or pull the
+canonical `asc` layout first.
 
 ## Step 3: Run Rejection Rule Checks
 
