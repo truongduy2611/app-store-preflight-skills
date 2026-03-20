@@ -18,11 +18,12 @@ App Store metadata (name, subtitle, description, keywords, promotional text, Wha
 
 ### Using asc CLI (pulled metadata)
 ```bash
-# Pull metadata first
-asc metadata pull --output-dir ./metadata
+# Pull canonical metadata first
+asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
 
-# Search across all locales
-grep -ri "android\|google play\|samsung\|huawei\|apk\|amazon appstore\|windows store\|microsoft store" ./metadata/
+# Search across app-info and version localizations
+grep -ri "android\|google play\|samsung\|huawei\|apk\|amazon appstore\|windows store\|microsoft store" \
+  ./metadata/app-info/ ./metadata/version/<VERSION>/
 ```
 
 ### Using local fastlane metadata
@@ -41,7 +42,7 @@ grep -ri "android\|google play" *.xcodeproj/project.pbxproj
    - "Available on Android" → "Available on multiple platforms"
    - "Also on Google Play" → remove entirely
    - "Transfer from Android" → "Transfer from your previous device"
-3. Re-verify using `asc metadata push --dry-run` before uploading
+3. Re-verify using `asc metadata push --app "<APP_ID>" --version "<VERSION>" --dir ./metadata --dry-run` before uploading
 
 ## Example Rejection
 > **Guideline 2.3.1 - Performance - Accurate Metadata**

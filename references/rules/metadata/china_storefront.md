@@ -29,17 +29,19 @@ Apps distributed on the **China mainland storefront** must not reference AI serv
 
 ### Using asc CLI
 ```bash
-# Pull metadata for all locales
-asc metadata pull --output-dir ./metadata
+# Pull canonical metadata for all locales in the version under review
+asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
 
 # Check Chinese locale specifically
-grep -ri "chatgpt\|openai\|gpt-4\|gemini\|claude\|anthropic\|midjourney\|dall-e\|copilot\|bard" ./metadata/zh-Hans/
+grep -i "chatgpt\|openai\|gpt-4\|gemini\|claude\|anthropic\|midjourney\|dall-e\|copilot\|bard" \
+  ./metadata/app-info/zh-Hans.json ./metadata/version/<VERSION>/zh-Hans.json 2>/dev/null
 ```
 
 ### Check all locales (Apple reviews all, not just zh-Hans)
 ```bash
 # Apple may flag ANY locale if the app is distributed in China
-grep -ri "chatgpt\|openai\|gpt-4\|gemini\|claude\|anthropic\|midjourney\|dall-e" ./metadata/
+grep -ri "chatgpt\|openai\|gpt-4\|gemini\|claude\|anthropic\|midjourney\|dall-e" \
+  ./metadata/app-info/ ./metadata/version/<VERSION>/
 ```
 
 ### Check storefront availability

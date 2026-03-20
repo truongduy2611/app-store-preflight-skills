@@ -24,16 +24,20 @@ App preview videos must only contain capture footage of the app running. They mu
 
 ### Using asc CLI
 ```bash
-# List current preview assets
-asc screenshots list --app-id <YOUR_APP_ID> --type previews
+# List current preview video assets for a specific version localization
+asc video-previews list --version-localization "<VERSION_LOCALIZATION_ID>"
+
+# Download previews locally for frame-by-frame inspection
+asc video-previews download --version-localization "<VERSION_LOCALIZATION_ID>" --output-dir ./previews
 ```
 
 ### Automated Check (ffmpeg frame analysis)
 ```bash
 # Extract first frame of each preview for visual inspection
-for preview in ./previews/*.mp4; do
-  ffmpeg -i "$preview" -vframes 1 -q:v 2 "${preview%.mp4}_frame.jpg"
-done
+find ./previews -type f \( -name "*.mov" -o -name "*.mp4" \) -print0 | \
+  while IFS= read -r -d '' preview; do
+    ffmpeg -i "$preview" -vframes 1 -q:v 2 "${preview%.*}_frame.jpg"
+  done
 ```
 Then visually inspect extracted frames for device imagery.
 

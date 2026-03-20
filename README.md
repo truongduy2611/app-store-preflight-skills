@@ -8,6 +8,10 @@ Preflight helps developers catch potential App Store Review guideline violations
 
 This skill integrates with the [`asc` CLI](https://github.com/rudrankriyam/App-Store-Connect-CLI) (`brew install asc`) and the [ASC CLI Skills](https://github.com/rudrankriyam/app-store-connect-cli-skills) to pull and inspect App Store metadata.
 
+Most metadata examples assume the canonical JSON layout written by
+`asc metadata pull`. If you are starting from fastlane metadata, adapt the path
+examples or pull the canonical `asc` layout first.
+
 ## Install
 
 ```bash
@@ -36,7 +40,7 @@ The `references/guidelines/` directory contains a **complete index of all 100+ A
 ## How It Works
 
 1. **Identify app type** → load the matching checklist from `references/guidelines/by-app-type/`
-2. **Pull metadata** using `asc metadata pull` (via the `asc-metadata-sync` skill)
+2. **Pull metadata** using `asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata` (or the `asc-metadata-sync` skill)
 3. **Scan** against rejection rules in `references/rules/`
 4. **Report** findings with severity, affected files, and resolution steps
 5. **Autofix + Validate** — apply fixes, re-run affected checks

@@ -24,20 +24,21 @@ Apps offering **auto-renewable subscriptions** must include all of the following
 
 ### Check App Store Connect fields
 ```bash
-# Pull metadata
-asc metadata pull --output-dir ./metadata
+# Pull canonical metadata JSON
+asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
 
-# Check if description contains ToS/EULA link
-grep -i "terms of use\|terms of service\|terms and conditions\|eula\|end user license" ./metadata/*/description.txt
+# Check if version descriptions mention ToS / EULA links
+grep -i "terms of use\|terms of service\|terms and conditions\|eula\|end user license" \
+  ./metadata/version/<VERSION>/*.json
 
-# Check if description contains Privacy Policy link
-grep -i "privacy policy\|privacy" ./metadata/*/description.txt
+# Check whether the App Store Connect Privacy Policy URL field is present
+grep -i "privacyPolicyUrl" ./metadata/app-info/*.json
 ```
 
 ### Check for URL patterns in descriptions
 ```bash
 # Look for actual URLs (http/https links) in descriptions
-grep -oE "https?://[^ ]+" ./metadata/*/description.txt
+grep -oE 'https?://[^" ]+' ./metadata/version/<VERSION>/*.json
 ```
 
 ### Check App Store Connect EULA field

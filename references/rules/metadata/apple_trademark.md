@@ -45,14 +45,15 @@ App metadata, icons, and screenshots must not include content confusingly simila
 ### App Name
 ```bash
 # Check app name for Apple product terms
-cat ./metadata/*/name.txt ./metadata/*/subtitle.txt 2>/dev/null | \
-  grep -i "iphone\|ipad\|macbook\|apple watch\|apple tv\|imessage\|facetime\|siri\|icloud\|vision pro"
+grep -i "iphone\|ipad\|macbook\|apple watch\|apple tv\|imessage\|facetime\|siri\|icloud\|vision pro" \
+  ./metadata/app-info/*.json
 ```
 
 ### Metadata Text
 ```bash
 # Search all pulled metadata for Apple product terms
-grep -ri "iphone\|ipad\|macbook\|apple watch\|apple tv\|imessage\|facetime\|siri\|airdrop\|vision pro" ./metadata/
+grep -ri "iphone\|ipad\|macbook\|apple watch\|apple tv\|imessage\|facetime\|siri\|airdrop\|vision pro" \
+  ./metadata/app-info/ ./metadata/version/<VERSION>/
 ```
 
 ### Screenshots

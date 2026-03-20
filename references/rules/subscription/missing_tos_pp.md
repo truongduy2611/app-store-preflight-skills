@@ -30,8 +30,11 @@ grep -rn "terms\|privacy\|eula\|TermsOfService\|PrivacyPolicy" --include="*.swif
 
 ### Check metadata descriptions
 ```bash
-# Verify ToS/PP links in descriptions
-grep -i "terms\|privacy\|eula" ./metadata/*/description.txt
+# Verify ToS / EULA links in pulled version metadata
+grep -i "terms\|privacy\|eula" ./metadata/version/<VERSION>/*.json
+
+# Verify the App Store Connect Privacy Policy URL field is present
+grep -i "privacyPolicyUrl" ./metadata/app-info/*.json
 ```
 
 ### Check App Store Connect

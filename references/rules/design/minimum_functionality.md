@@ -55,8 +55,8 @@ grep -rn "CoreData\|SwiftData\|UserDefaults\|Realm\|SQLite\|KeychainSwift" --inc
 
 ```bash
 # Pull and check description — if it's hard to describe what the app DOES, it may lack functionality
-asc metadata pull --output-dir ./metadata
-cat ./metadata/en-US/description.txt | wc -w
+asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
+jq -r '.description // empty' ./metadata/version/<VERSION>/<LOCALE>.json | wc -w
 # Very short descriptions (< 50 words) can indicate minimal functionality
 ```
 

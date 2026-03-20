@@ -18,6 +18,7 @@ Run pre-submission checks on your iOS/macOS project to catch common App Store re
 
 - **asc CLI** — Install via Homebrew: `brew install asc` ([App-Store-Connect-CLI](https://github.com/rudrankriyam/App-Store-Connect-CLI))
 - **ASC CLI Skills** — [app-store-connect-cli-skills](https://github.com/rudrankriyam/app-store-connect-cli-skills) for `asc` usage patterns
+- **jq** — Optional, but used by some JSON-inspection examples in the rule docs
 
 ## Step 1: Identify App Type → Load Checklist
 
@@ -43,10 +44,19 @@ Full guideline index: `references/guidelines/README.md`
 Pull the latest App Store metadata using the `asc` CLI:
 
 ```bash
-asc metadata pull --output-dir ./metadata
+# Pull canonical metadata JSON for the version you want to review
+asc metadata pull --app "<APP_ID>" --version "<VERSION>" --dir ./metadata
 ```
 
-If metadata already exists locally (e.g., fastlane `metadata/` directory), skip this step and point the scan at that directory.
+`asc metadata pull` writes app info files to `./metadata/app-info/*.json` and
+version-localization files to `./metadata/version/<VERSION>/*.json`.
+
+Most rule examples below assume the canonical JSON layout written by
+`asc metadata pull`.
+
+If you already have metadata in another layout (for example fastlane
+`metadata/`), either adapt the file-path examples to that structure or pull the
+canonical `asc` layout first.
 
 ## Step 3: Run Rejection Rule Checks
 
@@ -96,7 +106,7 @@ For issues requiring manual intervention (screenshots, UI redesign), provide cle
 
 - **China storefront** — Banned AI terms (ChatGPT, Gemini, etc.) are checked across ALL locales, not just `zh-Hans`. Apple checks every locale visible in the China storefront.
 - **Privacy manifests** — `PrivacyInfo.xcprivacy` is required even if your app doesn't call Required Reason APIs directly. Third-party SDKs (Firebase, Amplitude, etc.) that use `UserDefaults` or `NSFileManager` trigger this requirement transitively.
-- **asc auth** — `asc metadata pull` requires App Store Connect authentication. Run `asc auth` first or set `ASC_API_KEY` / `ASC_ISSUER_ID` environment variables.
+- **asc auth** — `asc metadata pull` requires App Store Connect authentication. Run `asc auth login` first, or set `ASC_KEY_ID`, `ASC_ISSUER_ID`, and one of `ASC_PRIVATE_KEY_PATH` / `ASC_PRIVATE_KEY` / `ASC_PRIVATE_KEY_B64`. If you're unsure what `asc` is picking up, run `asc auth doctor`.
 - **Subscription metadata** — Apple requires ToS/PP links in BOTH the App Store description AND the in-app subscription purchase screen. Missing either one is a separate rejection.
 - **macOS entitlements** — Apple will ask you to justify every temporary exception entitlement (`com.apple.security.temporary-exception.*`). Remove entitlements you don't actively use.
 
