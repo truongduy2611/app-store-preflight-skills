@@ -24,6 +24,15 @@ Apple requires apps to provide "valuable utility or entertainment" and be more t
 | 4.2.3(i) | App must work on its own without requiring another app |
 | 4.2.3(ii) | Disclose size of additional required downloads before user proceeds |
 | 4.2.6 | Template/app-generator apps rejected unless submitted by content provider |
+| 4.3(a) | No multiple Bundle IDs of the same app; offer variations via IAP |
+| 4.3(b) | No apps indistinguishable from what's widely available |
+
+### Saturated & Low-Effort Categories (4.3(b))
+
+Apple names these categories explicitly. If the app falls into one, flag a **WARNING** and check that the review notes explain what makes it meaningfully different:
+
+- **Saturated** (accepted only with a meaningfully different or better experience): dating, flashlight, sound effects, wallpaper, simple timers, fortune telling
+- **Rejected as low-effort**: drinking games, Kama Sutra, fart, burp apps
 
 ## How to Detect
 
