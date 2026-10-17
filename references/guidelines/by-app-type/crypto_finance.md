@@ -11,7 +11,7 @@ Guidelines specifically applying to cryptocurrency wallets, exchanges, trading p
 - [ ] **3.1.5(v)** — No offering crypto for completing tasks (downloading apps, social posting, etc.)
 - [ ] **3.2.2(viii)** — No binary options trading apps
 - [ ] **3.2.2(viii)** — CFD/FOREX apps: properly licensed in all service jurisdictions
-- [ ] **3.2.2(ix)** — Loan apps: APR ≤ 36%; repayment > 60 days; clearly disclose all terms
+- [ ] **3.2.2(ix)** — Loan apps: max APR ≤ 36% including costs and fees; no full repayment due in 60 days or less; clearly disclose all terms (APR, due date)
 - [ ] **5.1.1(ix)** — Banking, financial services, crypto exchanges: submit as legal entity, not individual
 
 ## Important (Common Rejections)
@@ -20,7 +20,7 @@ Guidelines specifically applying to cryptocurrency wallets, exchanges, trading p
 - [ ] **3.1.1** — Digital content within app must use IAP; crypto can't be used to unlock features
 - [ ] **3.1.1** — NFT ownership must not unlock features or functionality
 - [ ] **1.1.6** — No false financial information or misleading investment claims
-- [ ] **2.3.1** — All financial functionality documented in review notes
+- [ ] **2.3.1(a)** — All financial functionality described with specificity in review notes
 - [ ] **5.1.1(v)** — Account deletion must be offered if account creation exists
 - [ ] **1.6** — Appropriate security measures for financial data
 

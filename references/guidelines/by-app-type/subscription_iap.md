@@ -23,7 +23,7 @@ Guidelines that specifically apply to apps offering auto-renewable subscriptions
 - [ ] **3.1.2(a)** — Not taking away functionality previously paid for when switching to subscription model
 - [ ] **3.1.2(a)** — Free trial clearly identifies duration, what ends, and post-trial charges
 - [ ] **4.10** — Not charging for built-in OS capabilities (Push, camera, iCloud)
-- [ ] **3.2.1(x)** — Not forcing users to rate/review app to access features
+- [ ] **3.2.2(x)** — Not forcing users to rate/review app to access features
 
 ## In-App Subscription Screen Must Include
 

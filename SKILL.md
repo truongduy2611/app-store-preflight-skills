@@ -7,7 +7,8 @@ description: >
   entitlements, or design compliance. Integrates with the asc CLI for metadata inspection.
 metadata:
   author: truongduy2611
-  version: "1.0"
+  version: "1.1"
+  guidelines-synced: "2026-10-16"
 ---
 
 # App Store Preflight Skill
@@ -53,6 +54,10 @@ version-localization files to `./metadata/version/<VERSION>/*.json`.
 
 Most rule examples below assume the canonical JSON layout written by
 `asc metadata pull`.
+
+Creative assets (product page headers, search result assets; Guideline 2.3.14)
+live in App Store Connect's Asset Library. If your `asc` version doesn't pull
+them, review them by hand against 2.3.14.
 
 If you already have metadata in another layout (for example fastlane
 `metadata/`), either adapt the file-path examples to that structure or pull the
@@ -108,6 +113,10 @@ For issues requiring manual intervention (screenshots, UI redesign), provide cle
 - **Privacy manifests** — `PrivacyInfo.xcprivacy` is required even if your app doesn't call Required Reason APIs directly. Third-party SDKs (Firebase, Amplitude, etc.) that use `UserDefaults` or `NSFileManager` trigger this requirement transitively.
 - **asc auth** — `asc metadata pull` requires App Store Connect authentication. Run `asc auth login` first, or set `ASC_KEY_ID`, `ASC_ISSUER_ID`, and one of `ASC_PRIVATE_KEY_PATH` / `ASC_PRIVATE_KEY` / `ASC_PRIVATE_KEY_B64`. If you're unsure what `asc` is picking up, run `asc auth doctor`.
 - **Subscription metadata** — Apple requires ToS/PP links in BOTH the App Store description AND the in-app subscription purchase screen. Missing either one is a separate rejection.
+- **Hidden features (2.5.19)** — Feature flags are allowed, but every feature they can turn on must be in the reviewed build, reachable by the reviewer, and described in the review notes. Gating features on review-environment checks (sandbox receipt, TestFlight) is bait-and-switch and can get the developer account terminated.
+- **Third-party AI (5.1.2(i))** — Proxying AI calls through your own backend doesn't exempt you: if prompts or user content reach OpenAI, Gemini, Anthropic, etc., the app needs a consent screen naming the provider *before* the first request.
+- **Sign in with Apple relay domain** — New relay addresses use `private.icloud.com` (from late 2026) in addition to `privaterelay.appleid.com`. Hard-coded domain checks break for new users.
+- **SDK minimum** — Uploads must be built with the iOS 26 SDK or later (since April 28, 2026). An older Xcode fails at upload, not at review.
 - **macOS entitlements** — Apple will ask you to justify every temporary exception entitlement (`com.apple.security.temporary-exception.*`). Remove entitlements you don't actively use.
 
 ## Adding New Rules

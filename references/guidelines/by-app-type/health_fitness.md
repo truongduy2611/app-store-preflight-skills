@@ -14,12 +14,14 @@ Guidelines specifically applying to health tracking, fitness, medical, and Healt
 - [ ] **5.1.3(iii)** — Health research: informed consent required (nature, purpose, duration, risks, confidentiality, withdrawal)
 - [ ] **5.1.3(iv)** — Health research: independent ethics review board approval required
 
+- [ ] **Regulated medical device status** — Declared in App Store Connect if the app ships in the EEA, UK, or US **and** either (a) its primary/secondary category is Health & Fitness or Medical, or (b) the age rating questionnaire declares frequent Medical or Treatment Information. Required for new apps since March 26, 2026; existing apps must declare by early 2027 or updates are blocked. Select "No" if not a medical device ([how to declare](https://developer.apple.com/help/app-store-connect/manage-app-information/declare-regulated-medical-device-status))
+
 ## Important (Common Rejections)
 
 - [ ] **5.1.1** — Privacy policy clearly describes health data collection and use
 - [ ] **2.5.1** — HealthKit used for health/fitness purposes and integrates with Health app
 - [ ] **5.1.1(iii)** — Data minimization: only collect health data relevant to core functionality
-- [ ] **1.4.1** — If regulatory clearance received (FDA, etc.), submit link with app
+- [ ] **1.4.1** — If regulatory clearance received (FDA, etc.), submit link with app — and supply matching regulatory info (contact details, safety information) with the medical device status
 - [ ] **5.1.1(ix)** — Healthcare apps: submit as legal entity, not individual developer
 - [ ] **2.5.18** — No targeted ads based on health/medical data (HealthKit APIs)
 

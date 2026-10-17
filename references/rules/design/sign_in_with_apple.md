@@ -10,7 +10,7 @@ If the app offers **Sign in with Apple** (SIWA), the implementation must follow 
 1. **Asking for name/email after SIWA** — The Authentication Services framework already provides name and email (if the user chooses to share). Do not prompt for this information again.
 2. **Non-standard button styling** — The SIWA button must use Apple's provided `ASAuthorizationAppleIDButton` or equivalent, not a custom-designed button.
 3. **Hidden or de-emphasized SIWA** — If other social logins are shown (Google, Facebook, etc.), SIWA must be equally prominent.
-4. **Not handling the "Hide My Email" relay** — The app must work with Apple's relay email addresses (`*@privaterelay.appleid.com`).
+4. **Not handling the "Hide My Email" relay** — The app must work with Apple's relay email addresses (`*@privaterelay.appleid.com`, and from late 2026 **`*@private.icloud.com`** for new addresses). Email validators, allowlists, and domain checks must accept both.
 
 ## How to Detect
 
@@ -26,8 +26,10 @@ grep -rn "askForName\|askForEmail\|nameTextField\|emailTextField\|profileSetup\|
 ### Check for relay email handling
 ```bash
 # Ensure the app doesn't reject relay emails
-grep -rn "privaterelay.appleid.com\|@privaterelay\|email.*validation\|isValid.*email" --include="*.swift" --include="*.dart" .
+grep -rn "privaterelay.appleid.com\|@privaterelay\|private.icloud.com\|email.*validation\|isValid.*email" --include="*.swift" --include="*.dart" .
 ```
+
+If a hit hard-codes `privaterelay.appleid.com` (for example to detect relay users or allowlist domains) without `private.icloud.com` → ❌. New SIWA users will get the new domain.
 
 ### Visual Inspection
 1. Sign in with Apple using the "Hide My Email" option

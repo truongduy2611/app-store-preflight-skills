@@ -20,7 +20,7 @@ npx skills add truongduy2611/app-store-preflight-skills
 
 ## Guideline Index (by App Type)
 
-The `references/guidelines/` directory contains a **complete index of all 100+ Apple Review Guidelines** and **10 app-type specific checklists**:
+The `references/guidelines/` directory contains a **complete index of all 100+ Apple Review Guidelines** (last synced with Apple's **October 16, 2026** revision) and **10 app-type specific checklists**:
 
 | Checklist | App Type |
 |-----------|----------|
@@ -56,7 +56,7 @@ All rules live in `references/rules/`, organized by category:
 | Rule | Guideline | What It Catches |
 |------|-----------|-----------------|
 | [review_notes_new_submission](./references/rules/metadata/review_notes_new_submission.md) | 2.1 | Incomplete review notes for new app submissions (missing screen recording, app purpose, test credentials, external services, regional info, or regulatory docs) |
-| [competitor_terms](./references/rules/metadata/competitor_terms.md) | 2.3.1 | Android, Google Play, and other competitor brands |
+| [competitor_terms](./references/rules/metadata/competitor_terms.md) | 2.3.10 | Android, Google Play, and other competitor brands |
 | [apple_trademark](./references/rules/metadata/apple_trademark.md) | 5.2.5 | Apple device images in icon, Apple trademark misuse |
 | [china_storefront](./references/rules/metadata/china_storefront.md) | 5 | OpenAI/ChatGPT/Gemini references (China) |
 | [accurate_metadata](./references/rules/metadata/accurate_metadata.md) | 2.3.4 | Device frames in app preview videos |
@@ -74,6 +74,7 @@ All rules live in `references/rules/`, organized by category:
 | Rule | Guideline | What It Catches |
 |------|-----------|----------------|
 | [unnecessary_data](./references/rules/privacy/unnecessary_data.md) | 5.1.1 | Requiring irrelevant personal data |
+| [third_party_ai_consent](./references/rules/privacy/third_party_ai_consent.md) | 5.1.2(i) | Sending personal data to OpenAI/Gemini/Anthropic etc. without explicit consent |
 | [privacy_manifest](./references/rules/privacy/privacy_manifest.md) | 5.1.1 | Missing `PrivacyInfo.xcprivacy` |
 
 ### Design (`references/rules/design/`)
@@ -81,7 +82,8 @@ All rules live in `references/rules/`, organized by category:
 | Rule | Guideline | What It Catches |
 |------|-----------|----------------|
 | [sign_in_with_apple](./references/rules/design/sign_in_with_apple.md) | 4.0 | Asking name/email after SIWA |
-| [minimum_functionality](./references/rules/design/minimum_functionality.md) | 4.2 | WebView wrappers, apps with < 3 screens, no unique value |
+| [minimum_functionality](./references/rules/design/minimum_functionality.md) | 4.2, 4.3 | WebView wrappers, apps with < 3 screens, no unique value, saturated categories |
+| [hidden_features](./references/rules/design/hidden_features.md) | 2.5.19 | Review-mode detection, time bombs, undocumented feature flags, obfuscated functionality |
 
 ### Entitlements (`references/rules/entitlements/`)
 
